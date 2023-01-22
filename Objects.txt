@@ -1,0 +1,302 @@
+Objects = Collection of key value pairs
+We can even add nested objects as seen below.
+Also, we can have functions written inside the object
+Syntax:
+let object = {};
+
+
+//OOP
+let circle = {
+    radius: 1,
+    location: {
+        x : 1,
+        y : 1
+    },
+    isVisible: true,
+    draw: function(){
+        console.log('draw');
+    }
+};
+
+circle.draw(); // Method
+
+In terms of OOP, if the function is a part of object class, we call it as "Method"
+
+-----------------------------------------------
+As described above, if we want to create 2 objects of circle, we'll have to have 2 different implementation
+of draw function. This resukts in repetitive code.
+To avoid it, we can define functions using 2 approaches:
+    1. Factory function
+    2. Constructor function
+
+//Factory function
+Using this way, the function returns the objects.
+We use CamelNotation while creating Factory function.
+//Camel Notation: oneTwoThreeFour
+
+So, above code gets changed to this:
+function createCircle(radius){
+    return {
+    radius,     // No need radius: radius - See explanation below(In modern JS..)
+    draw(){
+        console.log('draw');
+    }
+};
+}
+
+var circleObj = createCircle();
+circleObj.draw();
+
+
+In modern JS, if the function argument is the same as what we want to return as a part of the object, we do not need to specify it like radius: radius. 
+Instead, we can just do a simple radius.
+Also, earlier we had draw: function(). If we're inside an object, we can drop the function keyword.
+And can directly write draw()
+
+
+//JS Code
+function createCircle(radius){
+    return {
+    radius,     // No need radius: radius - See explanation below(In modern JS..)
+    draw(){
+        console.log('draw');
+    }
+};
+}
+
+var circleObj = createCircle(10);
+circleObj.draw();
+
+var circle2Obj = createCircle(20);
+circle2Obj.draw();
+
+-------------
+Constructor function
+Uses PascalNotation while defining function - OneTwoThreeFour
+Need to use "new" keyword. 
+When we use new, 3 things happen.
+    1. A new blank object is created with syntax {}
+    2. Set "this" to point to the new object
+    3. Return that object from the function
+
+
+function Circle(radius){
+    this.radius = radius;
+    this.draw = function(){
+        console.log('draw');
+        }
+    }
+
+    const circle = new Circle(10);
+    circle.draw();
+
+
+Difference between Factory and Constructor functions:
+Object creation:
+    Factory:
+        const myCircle = createCircle(10);
+    Constructor:
+        const myCircle = new Circle(10);
+
+Constructor pattern - Used mostly by Devs who're more into C#/Java etc.
+Either of these patterns work for us
+
+
+-----------
+Dynamic nature of object.
+    1. In JS, objects are dynamic in nature. Once created, we can always add/remove properties from those objects.
+
+//JS Example    
+const circle = {
+    radius: 1
+}
+console.log(circle);
+circle.color = 'Yellow';
+circle.draw = function(){}
+console.log(circle);
+
+delete circle.color;
+delete circle.draw;
+console.log(circle);
+
+//In above example, once circle object is created, we dynamically added new properties like color, draw function etc.
+Once they're no longer used, we can even delete those properties using "delete" keywords
+
+----------------
+Constructor Property
+
+Every object we create either using Constructor or factory, 
+a constructor property will be created.
+
+For strings, we have this constructor but we often initialize 
+it with literals such as '' or "" or ``.
+mew String(); //'',"",``
+new Boolean(); //true, false
+new Number(); // 1, 2, 3 etc,
+
+Every object has a constructor property that references function 
+that was used to create that object
+
+----------------
+With JS, Functions are objects.
+For ex:
+
+function Circle(radius){
+    this.radius = radius;
+    this.draw = function(){
+        console.log('draw');
+    }
+}
+
+
+When we now do Circle., we see methods and properties.
+Purple boxes are method(apply, call, bind etc.) and blue boxes are properties(arguments) etc.
+
+Circle.call({}, 1)
+
+With call method, by passing {}, we're giving it an empty object which will reference to this used in the function.
+Like this.radius will be mapped to the blank object we're passing.
+
+-----------
+Value types vs Reference types
+
+Value Types:
+    Number
+    String
+    Boolean
+    Symbol
+    undefined
+    null
+
+Reference types:
+    Objects
+    Functions(Functions are Internally objects)
+    Arrays(Arrays are also Internally objects)
+
+
+When we use primitive types, their values are actually stored inside the variables
+When we assign the variable to another variable, the value will be copied
+
+let x = 10;
+let y = x;
+
+x = 20;
+
+For above code, in O/P,
+x will be 20 and y will be 10(Since with value types, their values will be actually copied)
+
+let x = {value: 10};
+let y = x;
+
+x.value = 20;
+
+For above code, in O/P,
+Both x and y will be 20. Since, they're inside an object and they point to a common location in memory.
+
+IN A NUTSHELL,
+Primitives -> Copied by value
+Objects -> Copied by reference
+
+Same logic as C#.
+When we did object mapping of funds, I passed the same object in parameters and no return was specified.
+
+-------------
+Enumerating properties of an object
+We can use for..in loop to iterate over object.
+We cannot use let..of loop since it only works on arrays.
+
+Object.keys(<actualObject>) -> Returns keys present in object
+Object.entries(<actualObject>) -> Returns key value pairs present in object
+in -> Returns bool whether key is present in object or not.
+
+
+for(let key of Object.keys(circle))
+    console.log(key);
+    
+for(let key of Object.entries(circle))
+console.log(key);
+
+if ('radius' in circle) console.log('yes')
+
+//  Object.keys -> Returns keys present in object
+//    Object.entries -> Returns key value pairs present in object
+
+--------------
+Cloning an object.
+2 ways:
+    1. Older way by iterating over the existing object using for..in looop
+    2. Better way - Using Object.Assign({existing or new object}) - One or more source objects can be combined over and assigned to newer object
+    3. Even better way - Using spread operator(...<Existing object>)
+
+    /Cloning
+//Older way
+// const another = {};
+// for (let key in circle)
+//     another[key] = circle[key];
+
+
+//Newer way using Object.assign
+const another = Object.assign({
+    color: 'yellow'
+}, circle);
+
+// Spread operator
+const clonedUsingSpread = {...circle};
+console.log('Spread', clonedUsingSpread);
+
+
+------------
+GC - Garbage Collection
+    With JS, we as developer do not need to worry about GC.
+    JS Engine will take care of deallocating memory of unused objects automatically
+
+------------
+Math
+Built-in Objects
+Refer documentation for accessing Math -> Properties and Objects
+
+------------
+String
+There are 2 types of strings in JS:
+    1. String primitive:
+        const message = 'hi';
+    
+    2. String object
+        const anotherString = new String('hiObject');
+
+With string primitive, internally, JS wraps it around an object.
+"So when we do message. OR anotherString., we see the same set of methods and properties
+
+Escape notation:
+    Escape characters are specified. For ex: IF we want to escape SingleQuote ' inside a string, we need to prefix it with a \
+
+    \n -> Adds new line
+
+------------
+Template Literals
+So, far, we know about these literals:
+//Object {}
+//Boolean true/false
+//String '', ""
+//Template ``(Back tick)
+
+const another = `This is my 
+first
+message`
+
+Useful, when we want to send out emails.
+
+const name = 'Nirav';
+const email = 
+`Hi ${name},
+
+Thank you for joining mailing list.
+
+Regards,
+Nirav`;
+
+----------------
+Date
+Another built-in object.
+
+const date1 = new Date()
