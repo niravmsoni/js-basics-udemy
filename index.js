@@ -289,9 +289,97 @@ const circle = {
 // Regards,
 // Nirav`;
 
-const now = new Date();
-const date1 = new Date('May 11 2019 09:00');
-const date2 = new Date(2022, 4, 11, 9, 0, 0);
+// const now = new Date();
+// const date1 = new Date('May 11 2019 09:00');
+// const date2 = new Date(2022, 4, 11, 9, 0, 0);
 
-now.getDate();
-now.setFullYear(2017);
+// now.getDate();
+// now.setFullYear(2017);
+
+
+//street
+//city
+//zipCode
+
+//showAddress function
+// const address = {
+//     street: 'New Chandrodaya Society',
+//     city: 'Surendranagar',
+//     zipCode: 363001
+// }
+
+// function showAddress(address){
+//     for(let key in address){
+//         console.log(key, address[key]);
+//     }
+// }
+
+// showAddress(address);
+
+//Exercise2: Same address object. Return it from Factory function and constructor function
+// function createAddress(street, city, zipCode){
+//     return {
+//         street,
+//         city,
+//         zipCode
+//     };
+// }
+
+// console.log(createAddress('a','b','c'));
+
+
+// function CreateAddr(street, city, zipCode){
+//     this.street = street,
+//     this.city = city,
+//     this.zipCode = zipCode
+// }
+
+// console.log(new CreateAddr('a','b','c'));
+
+//Exercise3: Object Equality - Use the same constructor function used to create object in above exercise. Create 2 objects from it. Implement 2 functions AreEqual() & AreSame()
+
+// let address1 = new CreateAddr('a','b','c');
+// let address2 = new CreateAddr('a','b','c');
+// let address3 = address1;
+
+// console.log(areEqual(address1, address2));  //true
+// console.log(areSame(address1, address2));   //false
+// console.log(areSame(address1, address3));   //true
+
+// function CreateAddr(street, city, zipCode){
+//     this.street = street,
+//     this.city = city,
+//     this.zipCode = zipCode
+// }
+
+// function areEqual(address1, address2){
+//     return address1.street === address2.street &&
+//     address1.city === address2.city &&
+//     address1.zipCode === address2.zipCode
+// }
+
+// // Checks objects in memory. Whether they're same or not.
+// function areSame(address1, address2){
+//     return address1 === address2;
+// }
+
+
+// const numbers = [5, 6];
+
+// //At the end
+// numbers.push(7);
+// console.log(numbers);
+
+// //At the beginning
+// numbers.unshift(3,4);
+// console.log(numbers);
+
+// //At the middle. First argument(Starting index), second argument(Number of items we want to delete. Keep it 0 if we want to preserve existing array items), then add whatever characters we want to add
+// numbers.splice(2, 0, 'a', 'b');
+
+
+const numbers = [1, 2, 3, 4, 1];
+
+console.log(numbers.indexOf('1'));
+console.log(numbers.lastIndexOf(1));
+console.log(numbers.includes(1));

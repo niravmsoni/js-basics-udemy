@@ -1,0 +1,40 @@
+Arrays:
+
+Adding elements
+
+const numbers = [3,4];
+    // We cannot re-assign the numbers array like numbers = []; But, we can modify(Add/remove) items of the array.
+
+We can add elements to the arrays at:
+    1. At the End(push method)
+    2. At the beginning(unshift method)
+    3. At the middle
+
+const numbers = [5, 6];
+
+//At the end
+numbers.push(7);
+console.log(numbers);
+
+//At the beginning
+numbers.unshift(3,4);
+console.log(numbers);
+
+//At the middle. First argument(Starting index), second argument(Number of items we want to delete. Keep it 0 if we want to preserve existing array items), then add whatever characters we want to add
+numbers.splice(2, 0, 'a', 'b');
+
+---------------------
+Finding elements(Primitive)
+
+--Older method
+Use indexOf method. Checks for type and value of the item. If no matches found, returns -1.
+Use lastIndexOf method if we want to find index of last occurrence from the array
+
+--newer way(Using includes)
+To check if item exists in array or not.
+
+const numbers = [1, 2, 3, 4, 1];
+
+console.log(numbers.indexOf('1'));
+console.log(numbers.lastIndexOf(1));
+console.log(numbers.includes(1));
