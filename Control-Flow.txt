@@ -1,0 +1,163 @@
+Control flow statements
+    1. If--else
+    2. Switch case
+
+1. If--else
+    if (condition){
+    block of statements
+    }
+    else if(anotherCondition)
+        statement
+    else
+        statement
+
+// JS Example
+    function greetWithMessage(hour){
+    if (hour >=6 && hour < 12){
+        console.log('Good Morning');
+    }
+    else if(hour >=12 && hour < 18){
+        console.log('Good Afternoon');
+    }
+    else{
+        console.log('Good evening');
+    }
+}
+
+greetWithMessage(10);
+greetWithMessage(14);
+greetWithMessage(20);
+
+2. Switch-case
+    Compare variable with pre-defined conditions
+switch(variable){
+    case 'matchValueWithVariable':
+    break;
+
+    case 'anotherMatchingValueWithVariable':
+    break;
+
+    default:
+
+}
+
+//Example
+let role;
+
+switch(role){
+    case 'guest':
+        console.log('Guest user');
+        break;
+
+    case 'moderator':
+        console.log('Moderator user');
+        break;
+    
+    default:
+        console.log('unknown');
+}
+
+
+-------
+Loops
+
+1. For
+2. While
+3. Do..While
+4. For..in
+5. For..of
+
+1. for
+    for(initialExpression; condition; incrementExpression){
+        statements
+    }
+
+// JS Code
+for(let i = 0; i < 5; i++){
+    console.log('Hello World', i);
+}
+
+
+2. while
+initializeCounter
+while(condition){
+    statements;
+    IncrementCounter
+}
+
+// JS Code
+let i = 0;
+while(i<=5){
+    if (i%2 !==0) console.log(i);
+    i++;
+}
+
+3. do..while
+-- Same as C# -> At-least executed once
+
+//do-while
+let i = 0;
+do{
+    if (i % 2 !==0) console.log(i);
+    i++;
+} while(i <=5);
+
+4. Infinite loop
+
+let i = 0;
+while(i < 5){
+console.log(i);
+// We do not increment the counter.
+}
+
+while(true){   
+}
+
+5. For..in(New as compared to C#)
+Used to iterate over all keys of an object.
+
+const person ={
+    name: 'Mosh',
+    age: 30
+} 
+
+for(let key in person){
+    console.log(key, person[key]);
+}
+
+//Starting ES6, Below way not recommended to iterate over arrays. Instead, we should use for--of loops
+const colors = ['red','green','blue'];
+
+for(let index in colors){
+    console.log(index, colors[index]);
+}
+
+6. For..Of loops(Specifically for arrays)
+const colors = ['red','green','blue'];
+
+for(let color of colors){
+    console.log(color);
+}
+
+---------
+Break and Continue keywords
+Break
+    -Jump out of loop
+
+for(let i = 0; i < 10; i++)
+{
+    if (i===5) break;
+    console.log(i);
+}
+
+Continue
+    --Skip current iterating item
+
+for(let i = 0; i< 10; i++)
+{
+    if (i % 2 ===0){
+        continue;
+    }
+
+    console.log(i);
+}

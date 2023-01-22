@@ -1,0 +1,178 @@
+Types of operators in js:
+    1. Arithmetic operators
+    2. Assignment operators
+    3. Comparison operators
+    4. Logical operators
+    5. Bitwise operators
+
+---------
+Arithmetic Operators
+
+let x = 10;
+let y = 3;
+
+// console.log(x + y);
+// console.log(x - y);
+// console.log(x * y);
+// console.log(x / y);
+// console.log(x % y);
+// console.log(x ** y); // Used for x to the power of y 10 raised to 3 = 1000
+
+// console.log(++x);
+// console.log(x);
+// console.log(x++);
+// console.log(x);
+
+// console.log(--x);
+// console.log(x);
+// console.log(x--);
+// console.log(x);
+
+Add, Substract, Multiple, Divide, Mod, RaisedTo, Increment and Decrement operators
+
+-----------
+Assignment operators
+
+Shorthand operators => Use +=, -= etc.
+let x = 10;
+
+x++; // This is equal to x = x + 1; This works for +1, If we want to do x = x + 5, we need to use short hand operators
+x += 5; // Equals to  x = x + 5;
+
+console.log(x);
+x*= 3; // Equals to  x = x * 3;
+
+console.log(x);
+
+-----------
+Comparison operators
+
+    Output of comparison operators = boolean
+    let x = 1;
+// Relational operators
+console.log(x > 0);
+console.log(x >= 1);
+console.log(x < 1);
+console.log(x <= 1);
+
+// Equality
+console.log(x === 1);
+console.log(x !== 1);
+
+
+------------
+Equality operator
+
+// Strict Equality operator - Ensures same type + value on both sides of equal to
+// ===
+console.log(1 === 1);   //true
+console.log('1' === 1); //false(Since string is compared to a number)
+
+// Loose equality operator - Doesn't care about type matching. IF they do not match, it will convert left hand side of == to the right hand side's matching one
+// ==
+console.log(1 == 1);    // true
+console.log('1' == 1);    // true
+console.log(true == 1);    // true
+console.log(false == 1);    // false
+
+------------
+Ternary operator
+
+Syntax: 
+    condition ? <True expression> : <False expression> -> Same as C#
+
+    // If customer more than 100 points, they're gold customer else they're silver customer
+
+let point = 110;
+let type = getCustomerType(point);
+console.log(type);
+point = 90;
+type = getCustomerType(point);
+console.log(type);
+
+function getCustomerType(point){
+    return point > 100 ? 'gold' : 'silver'
+}
+
+-------------
+Logical operators with Booleans
+    3 types:
+        1. Logical AND(&&) - Returns true if both operands are TRUE
+        2. Logical OR(||) - Returns true if one of the operands is TRUE
+        3. Logical NOT(!) - Opposite of whatever we give it
+
+// JS Code
+let highIncome = false;
+let goodCreditScore = false;
+
+let eligibleForLoan = highIncome || goodCreditScore;
+console.log('Eligible', eligibleForLoan);
+
+let applicationRefused = !eligibleForLoan;
+console.log('Application Refused', applicationRefused);
+
+
+-------------
+Logical operators with Non-booleans
+-- Unline C#, its not necessary for logical operators to work only with Booleans
+-- Result of Logical operand NOT NECESSARILY WILL BE TRUE OR FALSE. Depends on value of operands
+
+    false || true // Returns true
+    false || 1 // Returns 1
+    false || 'Nirav' // Returns 'Nirav'
+
+-- While evaluation, JS Engine tries to evaluate each operand. If it's not boolean, it tries to convert the operands into TRUTHY or FALSY
+
+// Falsy(Not boolean false)
+    undefined
+    null
+    0
+    false
+    ''
+    NaN
+
+//Anything is not falsy -> TRUTHY
+
+// JS
+false || 1 || 2 // Returns 1
+    Because as soon as we get a truthy value, it being an OR will return that straightaway.
+    In our case, it was 1.
+    This is called as Short-circuiting
+
+Practical usecase:
+    Used if we want to work with a default value
+
+let userColor = 'red';
+let defaultColor = 'blue';
+let currentColor = userColor || defaultColor;
+
+console.log(currentColor);  // Shows red
+
+---
+let userColor = undefined;
+let defaultColor = 'blue';
+let currentColor = userColor || defaultColor;
+
+console.log(currentColor);  // Shows undefined
+
+
+------------
+BitWise operators
+    More theoretical. Less used
+    // 1 = 00000001
+// 2 = 00000010
+// O/P of BitWise OR = 00000011
+// O/P of BitWise AND = 00000000
+
+console.log(1 | 2); // Bitwise OR - Evaluates bit wise 1's. So, 2nd last and last digit of bit wise 1 and 2. Return 3
+console.log(1 & 2); // Bitwise AND. Returns 0
+
+------------
+Operator Precedence
+
+let x = 2 + 3 * 4;
+console.log(x); // Returns 14 since * has higher precendence without brackets
+
+let x = (2 + 3) * 4;
+console.log(x); // Returns 20 since ()) has higher precendence
+

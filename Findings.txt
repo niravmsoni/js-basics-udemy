@@ -1,0 +1,179 @@
+1. Installed VSCode and NodeJS runtime
+2. Created a folder and dropped it in VSCode
+3. Installed an extension namely "Live Server"
+4. We can place script tag either in <head> or <body>. 
+5. Best practise to put it at the end of <body> tag for these reasons 
+	- If we put it before body, user will see white screen resulting in bad UX
+	- Almost all javascript needs to talk to the HTML DOM that's generated(For ex: Show/hide etc.).
+6. console.log('Hello World'); -> This is a statement where 'Hello World' = String
+7. // represents comment
+8. Separation of Concerns  - Ideally, HTML and JS should be written in separate files & we should avoid inline JS
+	Created separate index.js file and moved console.log code there.
+9. We can execute the same js from node as well using command prompt
+	Open Command Prompt > cd to folder that contains the js file> node index.js
+		Shows Hello World output
+		
+---------
+Variables
+1. Before ES6, we used var keyword for declaring variable. After ES6, we're using let keyword to declare variable
+2. Terminate statements with ";"
+3. ByDefault, values of var is undefined
+4. For declaring string, it's more common to use single quotes as compared to double quotes in js
+5. The variable name 
+	Cannot be a reserved keyword like let, if, else etc.
+	Should be meaningful and descriptive
+	Cannot start with a number
+	Cannot contain space or hyphen
+	Camel notation(firstLetter of first word should be lower case and rest should be uppercase)
+	variables are case sensitive
+	We can declare each variable in same line like:
+		let firstName,lastName;
+		OR
+		let firstName='Nirav',lastName;
+	Modern day best practise -> Initialize new variables in different lines
+
+---------
+Constants
+1. Variables declared using const cannot be updated. Similar to constant keyword in c#
+
+
+---------
+Primitive Types
+There are 2 types of datatypes in JS:
+	1. Primitive/Value Types
+		String
+		Number
+		Boolean
+		undefined
+		null
+
+let name = 'string'; //String Literal
+let age = 30;   // Number literal
+let isApproved = true; // Boolean literal
+let firstName; // By default -> Would be undefined
+let lastName = null; // We set it explicitly to null when we want to fill the value later after User interaction
+
+	2. Reference Types
+		Objects
+		Arrays
+		Functions
+
+----------
+Dynamic Typing
+	Similar to dynamic keyword in C#. dataType can be changed at runtime. 
+	For ex: 
+		let name = 'John'; can be further updated to name = 123;
+	We can check the data type of a variable using typeof keyword.
+	for ex:
+		typeof age
+	Another good thing about JS is we just have a number. No Float, Decimal, Double. Just "Number"
+	If we check the typeof lastName(In above example), it will return as Object
+
+----------
+Objects
+	Same concept as C#
+	Syntax is {}.
+	Inside {}, we need to specify key: value pairs.
+
+	For ex:
+	let person = {
+    name: 'Hemali',
+    age: 24
+	}
+
+	cconsole.log(person);
+
+	For accessing the properties of the object, there are 2 ways:
+		1. Dot notation(More commonly used)
+
+			let person = {
+    		name: 'Hemali',
+    		age: 24
+			}
+
+			person.name = 'Nirav';
+			console.log(person.name);
+		
+		2. Bracket notation(More used when have a possibility of a dynamic updation of object -  See Ex: 2)
+		Ex: 1
+		let person = {
+    		name: 'Hemali',
+    		age: 24
+			}
+
+			person['name'] = 'Nirav';
+			console.log(person.name);
+
+		Ex: 2
+		let person = {
+    		name: 'Hemali',
+    		age: 24
+			}
+
+		let selection = 'name'; // This can change dynamically based on some UI interaction
+		person[selection] = 'Mary';
+
+-----------
+Arrays
+	Equivalent of List in C#
+	let selectedColors = [];	// Indicate empty array
+	
+	let selectedColors = ['red', 'blue'];	// Array prefilled with 2 items
+	console.log(selectedColors);
+
+	Individual items can be accessed by its Index
+		console.log(selectedColors[0]);
+
+	Array being a dynamic property. Its' length can change
+		let selectedColors = ['red', 'blue'];
+		selectedColors[2] = 'green';
+		console.log(selectedColors);
+
+	We can store different types of elements in an array. For ex: Array can contain combination of string and numbers
+	let selectedColors = ['red', 'blue'];
+	selectedColors[2] = 1;
+	console.log(selectedColors);
+
+	IMP - Technically, arrays are objects. Like we discussed in the object lecture, they can be accessed via either a dot notation or a bracket notation
+
+
+----------
+Functions
+	Set of statement that performs a task or calculates a value
+	Example: Performing a task
+	Syntax:
+		function <functionName>(<Parameters>){
+			<Function Body>
+		}
+
+		function greet(){
+			console.log('Hello World');
+		}
+	IMP - No Semicolon at the end of the function since it's not a statement. When we call that function, that's a statement
+
+	function greet(name){
+    	console.log('Hello ' + name);
+	}
+
+	greet('Test');
+	greet(1);
+
+	-------------------
+	function greet(name, lastName){
+    console.log('Hello ' + name + ' ' + lastName);
+	}
+
+	greet('Test');	// Since we're passing only 1 argument, it will be printed as undefined
+	greet('Test','Nirav');
+
+
+------------
+Types of Functions
+	If we want to perform a calculation and return data from the function, we need to use the return keyword
+
+	function square(number){
+    return number * number;
+	}
+
+	console.log(square(2));
+	
