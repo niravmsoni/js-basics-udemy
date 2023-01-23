@@ -378,8 +378,133 @@ const circle = {
 // numbers.splice(2, 0, 'a', 'b');
 
 
-const numbers = [1, 2, 3, 4, 1];
+// const numbers = [1, 2, 3, 4, 1];
 
-console.log(numbers.indexOf('1'));
-console.log(numbers.lastIndexOf(1));
-console.log(numbers.includes(1));
+// console.log(numbers.indexOf('1'));
+// console.log(numbers.lastIndexOf(1));
+// console.log(numbers.includes(1));
+
+// const courses = [
+//     { id: 1, name: 'a' },
+//     { id: 2, name: 'b' },
+// ]
+
+// console.log(courses.includes({id: 1, name:'a'}));   // Returns false
+// We get false since these are 2 different objects
+// Since they're present in 2 different locations in memories 
+
+//Correct way to use .find() method
+// let course = courses.find(function(course){
+//     return course.name === 'a';
+// });
+
+//Arrow function syntax
+    //Remove function keyword.
+    // In case of single param, remove ()brackets
+    // In case of no param, have ()
+
+    // In case of single statement like below, remove return keyword and {} as well.
+    // Read as course goes to course.name equals a
+// let course = courses.find(course => course.name === 'a');
+
+// console.log(course);
+
+//Remove elements
+// const numbers = [1, 2, 3, 4];
+
+// //End -.pop() -> Removes last element of array and returns it.
+// const last = numbers.pop();
+// console.log(numbers);
+// console.log(last);
+
+// //Beginning 
+// const first = numbers.shift();
+// console.log(numbers);
+// console.log(first);
+
+// //Middle
+// numbers.splice(2, 1);
+// console.log(numbers);
+
+// let numbers = [1, 2, 3, 4];
+// let another = numbers;  // Arrays = Reference type
+
+// //Soln#1 - Doesn't work for more than 1 references to our array(Recommended)
+// // numbers = [];
+
+// // Soln#2 - Set .length to 0(Recommended)
+// // numbers.length = 0;
+
+// // Soln#3 - Use splice method
+// // numbers.splice(0, numbers.length);
+
+// //Soln#4 - Pop method - Use it in loop(Least recommended)
+// while(numbers.length > 0)
+//     numbers.pop();
+
+// console.log(numbers);
+// console.log(another);
+
+// const first = [1, 2, 3];
+// const second = [4, 5, 6];
+
+// //Combine using concat()
+// const combined = first.concat(second);   // Returns new array. First & second will remain untouched
+// console.log(combined);
+
+// //Slice array using slice()
+// const slice = combined.slice(2);
+// console.log(slice);
+
+
+// const first = [{id: 1}];// Reference type[Object].
+// const second = [4, 5, 6];
+
+// const combined = first.concat(second);  
+// // With concat, the returned array's 0th element will also point to same reference in memory.
+// // So, directly updating the id will result in updated combined array's 0 element.
+// first[0].id = 2;
+
+// console.log(combined);
+
+// const first = [1, 2, 3];
+// const second = [4, 5, 6];
+
+// //Combine using spread operator.
+// //Gives more flexibility if we want to add anything between these 2 arrays
+// const combined = [...first, 'a', ...second]   // Returns new array. First & second will remain untouched
+// console.log(combined);
+
+// const copy = [...combined];
+// console.log(copy);
+
+
+// const numbers = [1, 2, 3];
+
+// // Soln#1 - Using for..of loop
+// for (let number of numbers)
+//     console.log(number);
+
+// // Soln#2 - Using forEach loop
+// numbers.forEach(function(number){
+//     console.log(number);
+// });
+
+// // Soln#3 - Using forEach with arrow function
+// numbers.forEach(number => console.log(number));
+
+const numbers = [1, 2, 3];
+//Soln#1 - Join array using join() method. Specify separator if any. In our case ','
+const joined = numbers.join(',');
+
+console.log(joined);
+
+//Another similar implementation but with strings.
+const message = 'This is my first message';
+//Split string where space is encountered
+const parts = message.split(' ');
+console.log(parts);
+
+//Join array using '-'
+const combined = parts.join('-');
+console.log(combined);
