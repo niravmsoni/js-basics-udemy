@@ -179,7 +179,6 @@ numbers.forEach(number => console.log(number));
 ----------------
 Joining an array
 
-
 const numbers = [1, 2, 3];
 //Soln#1 - Join array using join() method. Specify separator if any. In our case ','
 const joined = numbers.join(',');
@@ -194,3 +193,118 @@ console.log(parts);
 
 //Join array using '-'
 const combined = parts.join('-');
+
+-----------------
+Sorting an array
+    Primitive types:
+        .sort()
+        .reverse()
+
+const numbers = [2, 3, 1];
+
+// Soln#1 - It converts the array into string and then sorts it. Useful if arrays have nmbers/strings
+numbers.sort();
+console.log(numbers);
+
+//Soln#2 - Reverses array
+numbers.reverse();
+console.log(numbers);
+
+    Objects:
+
+    // For objects, we need to pass a custom function(Or Arrow Fn) to sort method and implement custom logic
+const courses = [ 
+    {id: 1, name: 'Node.js'},
+    {id: 2, name: 'javascript'}
+]
+
+courses.sort((a, b) => {
+    // a < b => -1
+    //a > b => 1
+    // a === b => 0
+
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+
+    if (nameA < nameB) return -1;
+    if (nameA > nameB) return 1;
+    return 0;
+});
+
+console.log(courses);
+
+---------------
+Testing elements of array
+Useful functions in Js:
+    1. every()
+    2. some()
+
+1. every()
+    Checks if every element in array meets the criteira?
+    Takes in call back function as argument and then returns bool based on condition
+
+    //Check if all numbers are > 0
+    const numbers = [1, 2, 3, -1];
+
+    const allPositive = numbers.every(function(value){
+    return value >= 0;
+    });
+
+     console.log(allPositive);
+
+2. some()
+ Checks if at-least 1 element in array meets the criteira?
+//Check if at-least 1 number is > 0
+const numbers = [1, 2, 3, -1];
+
+const atLeastOnePositive = numbers.some((value) => {
+return value >= 0;
+});
+
+console.log(atLeastOnePositive);
+
+----------------
+Filtering an array
+//filter() method returns filtered items from array based on the condition
+const numbers = [1, -1, 2, 3];
+
+const filtered = numbers.filter(value => {
+    return value >= 0;
+});
+
+console.log(filtered);
+
+-----------------
+Mapping an array
+
+.map() method to map each element of array into something else
+Below example -> Mapped number to string
+const numbers = [1, -1, 2, 3];
+
+const filtered = numbers.filter(value => {
+    return value >= 0;
+});
+
+const items = filtered.map(n => '<li>' + n + '</li>');
+
+const html = '<ul>' + items.join('') + '</ul>';
+console.log(html);
+
+//Mapping with object
+
+.map() does not modify the original array instead they return back the modified aray.
+So, THEY're CHAINABLE
+
+const numbers = [1, -1, 2, 3];
+
+const items = numbers
+.filter(n => n >= 0)
+.map(n => ({value: n}));
+
+console.log(items);
+
+
+------------
+Reducing an array
+
+Use .reduce() method

@@ -493,18 +493,84 @@ const circle = {
 // // Soln#3 - Using forEach with arrow function
 // numbers.forEach(number => console.log(number));
 
-const numbers = [1, 2, 3];
-//Soln#1 - Join array using join() method. Specify separator if any. In our case ','
-const joined = numbers.join(',');
+// const numbers = [1, 2, 3];
+// //Soln#1 - Join array using join() method. Specify separator if any. In our case ','
+// const joined = numbers.join(',');
 
-console.log(joined);
+// console.log(joined);
 
-//Another similar implementation but with strings.
-const message = 'This is my first message';
-//Split string where space is encountered
-const parts = message.split(' ');
-console.log(parts);
+// //Another similar implementation but with strings.
+// const message = 'This is my first message';
+// //Split string where space is encountered
+// const parts = message.split(' ');
+// console.log(parts);
 
-//Join array using '-'
-const combined = parts.join('-');
-console.log(combined);
+// //Join array using '-'
+// const combined = parts.join('-');
+// console.log(combined);
+
+
+// const numbers = [2, 3, 1];
+
+// // Soln#1 - It converts the array into string and then sorts it. Useful if arrays have nmbers/strings
+// numbers.sort();
+// console.log(numbers);
+
+// //Soln#2 - Reverses array
+// numbers.reverse();
+// console.log(numbers);
+
+// // For objects, we need to pass a custom function(Or Arrow Fn) to sort method and implement custom logic
+// const courses = [ 
+//     {id: 1, name: 'Node.js'},
+//     {id: 2, name: 'javascript'}
+// ]
+
+// courses.sort((a, b) => {
+//     // a < b => -1
+//     //a > b => 1
+//     // a === b => 0
+
+//     const nameA = a.name.toUpperCase();
+//     const nameB = b.name.toUpperCase();
+
+//     if (nameA < nameB) return -1;
+//     if (nameA > nameB) return 1;
+//     return 0;
+// });
+
+// console.log(courses);
+
+// //Check if at-least 1 number is > 0
+// const numbers = [1, 2, 3, -1];
+
+// const atLeastOnePositive = numbers.some((value) => {
+// return value >= 0;
+// });
+
+// console.log(atLeastOnePositive);
+
+//filter() method returns filtered items from array based on the condition
+// const numbers = [1, -1, 2, 3];
+
+// const items = numbers
+// .filter(n => n >= 0)
+// .map(n => ({value: n}));
+
+// console.log(items);
+
+
+const numbers = [1, -1, 2, 3];
+
+//Older way
+// let sum = 0;
+// for (let n of numbers)
+// sum += n;
+
+//Using .reduce(callbackfunction, initial value of accumulator)
+
+const sum = numbers.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+});
+
+console.log(sum);
