@@ -308,3 +308,5 @@ console.log(items);
 Reducing an array
 
 Use .reduce() method
+First param -> Accumulator, 2nd param -> Current value
+Loop through all elements and assign value to accumulator
