@@ -719,3 +719,39 @@ const circle = {
 //     .map(m => m.title);
 
 // console.log(result);
+
+// //Function Declaration
+// function walk(){
+//     console.log('walk');
+// }
+
+// //Anonymous Function Expression
+// let run = function(){
+//     console.log('run');
+// };
+
+// run(); //Function call
+// let move = run;
+// move();
+
+
+// walk();
+
+// function walk(){
+//     console.log('walk');
+// }
+
+// run();
+
+// const run = function(){
+//     console.log('run');
+// };
+
+function sum(){
+    let total = 0;
+    for(let value of arguments)
+    total+= value;
+    return total;
+}
+
+console.log(sum(1, 2, 3, 4, 5));
