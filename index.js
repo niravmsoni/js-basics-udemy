@@ -560,17 +560,162 @@ const circle = {
 // console.log(items);
 
 
-const numbers = [1, -1, 2, 3];
+// const numbers = [1, -1, 2, 3];
 
-//Older way
-// let sum = 0;
-// for (let n of numbers)
-// sum += n;
+// //Older way
+// // let sum = 0;
+// // for (let n of numbers)
+// // sum += n;
 
-//Using .reduce(callbackfunction, initial value of accumulator)
+// //Using .reduce(callbackfunction, initial value of accumulator)
 
-const sum = numbers.reduce((accumulator, currentValue) => {
-    return accumulator + currentValue;
-});
+// const sum = numbers.reduce((accumulator, currentValue) => {
+//     return accumulator + currentValue;
+// });
 
-console.log(sum);
+// console.log(sum);
+
+// Generate array between max and min passed inside the function
+// const numbers = arrayFromRange(-10, -4);
+
+// console.log(numbers);
+
+// function arrayFromRange(min, max){
+//     const rangedArray = [];
+//     for(let i = min; i <= max; i++)
+//     rangedArray.push(i);
+
+//     return rangedArray;
+// }
+
+//Write a function equivalent to .includes() function
+// const numbers = [1, 2, 3, 4];
+// const searchElement = 5;
+
+// console.log(selfIncludes(numbers, 5));
+
+// //Should return true/false
+// function selfIncludes(array, searchElement){
+//     if (array.indexOf(searchElement) === -1)
+//     return false;
+//     else
+//     return true;
+// }
+
+// Implement except() function.
+// const numbers = [1, 2, 3, 4];
+
+// const output = except(numbers, [1]);
+
+// console.log(output);
+
+// function except(array, excluded){
+//     const outputArr = [];
+
+//     for(let element of array){
+//         if (element !== excluded){
+//             if (!excluded.includes(element))
+//             outputArr.push(element);
+//         }
+//     }
+//     return outputArr;
+// }
+
+// Move element inside array
+// const numbers = [1, 2, 3, 4];
+// const output = move(numbers, 0, 0);
+
+// console.log(output);
+
+// function move(array, index, offset){
+//     const position = index + offset;
+
+//     if (position >= array.element || position < 0){
+//         console.error('Invalid offset.');
+//         return;
+//     }
+
+//     const output = [...array];
+//     const element = output.splice(index, 1)[0];
+//     output.splice(position, 0, element);
+//     return output;
+// }
+
+
+//Count occurrences of item in an array
+// const numbers = [1, 2, 3, 4, 1];
+// const count = countOccurrences(numbers, 1);
+
+// console.log(count);
+
+// // Soln#1
+// // function countOccurrences(array, searchElement){
+// //     let output = 0;
+
+// //     for (let item of array){
+// //         if (item === searchElement)
+// //         output++;
+// //     }
+
+// //     return output;
+// // }
+
+// //Soln#2 - Using Reduce
+// function countOccurrences(array, searchElement){
+//     return array.reduce((accumulator, current) => {
+//         const occurrence = (current === searchElement) ? 1 : 0;
+//         console.log(accumulator, current, searchElement);
+//         return accumulator + occurrence;
+//     }, 0);
+// }
+
+
+//Get Max item of array.
+// const numbers = [1, 2, 3, 4];
+
+// const max = getMax(numbers);
+
+// console.log(max);
+
+// //Soln#1 - Using for loop
+// // function getMax(array){
+// //     if (array.length === 0) return undefined;
+
+// //     let max = array[0];
+
+// //     for(let i = 1; i < array.length; i++)
+// //     if (array[i] > max)
+// //     max = array[i];
+
+// //     return max;
+// // }
+
+// //Soln#2 - Using reduce()
+
+// function getMax(array){
+//     if (array.length === 0) return undefined;
+
+//     array.reduce((a, b) => {
+//         return (a > b) ? a : b;
+//     });
+// }
+
+
+//All movies in 2018 with rating > 4
+//Sort by rating
+//Descending order
+//Pick title
+
+// const movies = [
+//     { title: 'a', year: 2018, rating: 4.5 },
+//     { title: 'b', year: 2018, rating: 4.7 },
+//     { title: 'c', year: 2018, rating: 3 },
+//     { title: 'd', year: 2017, rating: 4.5 },
+// ]
+
+// const result = movies.filter(m => m.year === 2018 && m.rating >= 4)
+//     .sort((a, b) => a.rating - b.rating)
+//     .reverse()
+//     .map(m => m.title);
+
+// console.log(result);

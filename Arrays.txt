@@ -310,3 +310,5 @@ Reducing an array
 Use .reduce() method
 First param -> Accumulator, 2nd param -> Current value
 Loop through all elements and assign value to accumulator
+
+-- TIP - Any time we have an array and we want a single value out of array, think of reduce() method
