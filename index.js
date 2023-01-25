@@ -754,8 +754,37 @@ const circle = {
 
 // console.log(sum(0.1, 20, 30));
 
-function interest(principal, rate = 3.5, years = 5){
-    return principal * rate / 100 * years;
-}
+// function interest(principal, rate = 3.5, years = 5){
+//     return principal * rate / 100 * years;
+// }
 
-console.log(interest(10000, 3.5, 5));
+// console.log(interest(10000, 3.5, 5));
+
+// const person = {
+//     firstName: 'Nirav',
+//     lastName: 'Soni',
+//     fullName(){
+//         return `${person.firstName} ${person.lastName}`
+//     }
+// };
+
+// getters => access properties
+// setters => change(mutate) them
+
+const person = {
+    firstName: 'Nirav',
+    lastName: 'Soni',
+    get fullName(){
+        return `${person.firstName} ${person.lastName}`
+    },
+    set fullName(value){
+        const parts = value.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+};
+
+console.log(person.fullName);
+person.fullName = 'Hemali Soni';
+
+console.log(person);

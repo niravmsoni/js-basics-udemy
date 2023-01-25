@@ -107,3 +107,38 @@ Default parameter
 
 ---------
 Getters & Setters
+
+Problem:
+const person = {
+    firstName: 'Nirav',
+    lastName: 'Soni',
+    fullName(){
+        return `${person.firstName} ${person.lastName}`
+    }
+};
+
+console.log(person.fullName());
+
+//Using this approach, we defined a function inside the object namely fullName() and made a function call().
+//However, we won't be able to set it. Also, fullName ideally should be a property and not a method.
+//So, here's where getters and setters come in, 
+
+//Use Get and Set keywords inside the object and access it like properties
+
+const person = {
+    firstName: 'Nirav',
+    lastName: 'Soni',
+    get fullName(){
+        return `${person.firstName} ${person.lastName}`
+    },
+    set fullName(value){
+        const parts = value.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+};
+
+console.log(person.fullName);
+person.fullName = 'Hemali Soni';
+
+console.log(person);
