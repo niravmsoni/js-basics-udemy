@@ -64,3 +64,18 @@ function sum(){
 }
 
 console.log(sum(1, 2, 3, 4, 5));
+
+
+----------------
+The Rest Operator
+
+    Useful if we want to have a varying number of arguments coming in to the function
+    We specify it with 3 dots in the function parameter.
+    Kind of similar to spread operator in js.
+    function sum(discount, ...args){    // works
+        ...
+    }
+
+    function sum(discount, ...args, someValue)  //Errors out. Rest parameter MUST BE the last formal parameter
+
+    Reason it's named as Rest is because this being the last param of a function. So, its implied that the function can contain n number of params and the rest of params(variable params can be passed from the caller).
