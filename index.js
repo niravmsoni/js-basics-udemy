@@ -747,9 +747,15 @@ const circle = {
 //     console.log('run');
 // };
 
-function sum(discount,...args){
-    const total = args.reduce((a, b) => a + b);
-    return total * (1 - discount);
+// function sum(discount,...args){
+//     const total = args.reduce((a, b) => a + b);
+//     return total * (1 - discount);
+// }
+
+// console.log(sum(0.1, 20, 30));
+
+function interest(principal, rate = 3.5, years = 5){
+    return principal * rate / 100 * years;
 }
 
-console.log(sum(0.1, 20, 30));
+console.log(interest(10000, 3.5, 5));

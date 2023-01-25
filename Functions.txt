@@ -79,3 +79,31 @@ The Rest Operator
     function sum(discount, ...args, someValue)  //Errors out. Rest parameter MUST BE the last formal parameter
 
     Reason it's named as Rest is because this being the last param of a function. So, its implied that the function can contain n number of params and the rest of params(variable params can be passed from the caller).
+
+
+--------------
+Default parameter
+
+    1. Soln#(Older way): Use || condition(In this case, if rate and years are not passed, they will be used as 3.5 and 5 respectively due to truthy keyword)
+    function interest(principal, rate, years){
+    rate = rate || 3.5;
+    years = years || 5;
+
+    return principal * rate / 100 * years;
+    }
+
+    console.log(interest(10000, 3.5, 5));
+
+    2. Soln#2(ES6) : Set default value in the function definition itself
+
+    function interest(principal, rate = 3.5, years = 5){
+        return principal * rate / 100 * years;
+    }
+
+    console.log(interest(10000, 3.5, 5));
+
+    CAVEAT# - Whatever default value we give to a parameter, ALL PARAMETERS FOLLOWING IT SHOULD ALSO BE ASSIGNED A DEFAULT VALUE.
+    IN ABOVE EXAMPLE, If we do not specify years = 5, it will remain undefined
+
+---------
+Getters & Setters
