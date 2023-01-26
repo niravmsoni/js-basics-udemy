@@ -202,3 +202,31 @@ Replace function in top example with if() statement OR a for() loop. Result will
 If a variable is defined outside of any brackets, the scope of it becomes GLOBAL
 
 As a general best practise, try to avoid Global variables as much as possible
+
+--------------
+Let vs Var
+
+Issue#1
+Prior to ES6, var was the only option to declare variables.
+    //var -> Creates function-scoped variables
+    //let, const -> create block-scoped variables
+
+function startWithLet(){
+    for(let i = 0; i < 5; i++)
+        console.log(i);
+
+    console.log(i); // Error - Since With Let, scope remains limited to where its' supposed to be.
+}
+
+function startWithVar(){
+    for(var i = 0; i < 5; i++)
+        console.log(i);
+
+    console.log(i); // Prints 5 since with var, it does not terminate once for loop ends. Issue with VAR
+}
+
+startWithLet();
+startWithVar();
+
+Issue#2 - If var declared in global scope, it attaches itself to window object. Let does not.
+Window is a big complex object

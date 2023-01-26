@@ -771,30 +771,47 @@ const circle = {
 // getters => access properties
 // setters => change(mutate) them
 
-const person = {
-    firstName: 'Nirav',
-    lastName: 'Soni',
-    get fullName(){
-        return `${person.firstName} ${person.lastName}`
-    },
-    set fullName(value){
-        if (typeof value !== 'string')
-            throw new Error('Value is not a string.');
+// const person = {
+//     firstName: 'Nirav',
+//     lastName: 'Soni',
+//     get fullName(){
+//         return `${person.firstName} ${person.lastName}`
+//     },
+//     set fullName(value){
+//         if (typeof value !== 'string')
+//             throw new Error('Value is not a string.');
 
-        const parts = value.split(' ');
-        if (parts.length !== 2)
-            throw new Error('Enter a first and last name')
+//         const parts = value.split(' ');
+//         if (parts.length !== 2)
+//             throw new Error('Enter a first and last name')
 
-        this.firstName = parts[0];
-        this.lastName = parts[1];
-    }
-};
+//         this.firstName = parts[0];
+//         this.lastName = parts[1];
+//     }
+// };
 
-try{
-    person.fullName = '';
+// try{
+//     person.fullName = '';
+// }
+// catch(e){
+//     alert(e);
+// }
+
+// console.log(person);
+
+function startWithLet(){
+    for(let i = 0; i < 5; i++)
+        console.log(i);
+
+    console.log(i); // Error - Since With Let, scope remains limited to where its' supposed to be.
 }
-catch(e){
-    alert(e);
+
+function startWithVar(){
+    for(var i = 0; i < 5; i++)
+        console.log(i);
+
+    console.log(i); // Prints 5 since with var, it does not terminate once for loop ends. Issue with VAR
 }
 
-console.log(person);
+startWithLet();
+startWithVar();
