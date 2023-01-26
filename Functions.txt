@@ -180,3 +180,25 @@ catch(e){
 }
 
 console.log(person);
+
+-----------------
+Scope
+
+Scope of constant/variable decides where that constant or variable is accessible
+1. Variables defined with let/const are limited to the scope that they're declared in.
+
+For ex:
+const color = 'red';    // Global scope
+function start (){
+    const message='hi'; // Local scope
+    const color = 'blue';
+    console.log('color);    // Works(Due to global scope. We see BLUE since local variables take precedence over global variables)
+    console.log(message);   // Works(Due to local scope)
+}
+
+console.log(message);   //Will throw error since its' not accessible
+Replace function in top example with if() statement OR a for() loop. Result will be the same 
+
+If a variable is defined outside of any brackets, the scope of it becomes GLOBAL
+
+As a general best practise, try to avoid Global variables as much as possible
