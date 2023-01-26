@@ -238,12 +238,12 @@
 
 // x.value = 20;
 
-const circle = {
-    radius: 1,
-    draw(){
-        console.log('draw');
-    }
-}
+// const circle = {
+//     radius: 1,
+//     draw(){
+//         console.log('draw');
+//     }
+// }
 
 //Works
 // for(let key in circle)
@@ -799,19 +799,44 @@ const circle = {
 
 // console.log(person);
 
-function startWithLet(){
-    for(let i = 0; i < 5; i++)
-        console.log(i);
+// const video={
+//     title: 'a',
+//     play(){
+//         console.log(this);  // Since play is a method inside video object, video object will be printed on console.
+//     }
+// }
 
-    console.log(i); // Error - Since With Let, scope remains limited to where its' supposed to be.
-}
 
-function startWithVar(){
-    for(var i = 0; i < 5; i++)
-        console.log(i);
+// function playVideo(){
+//     console.log(this);
+// }
 
-    console.log(i); // Prints 5 since with var, it does not terminate once for loop ends. Issue with VAR
-}
+// playVideo();    //Logs Window object
 
-startWithLet();
-startWithVar();
+// playVideo.call({name: 'Nirav'}), 1, 2;    // Logs whatever object we've passed as a param.
+// playVideo.apply({name: 'Nirav'}, [1, 2]);    // Logs whatever object we've passed as a param.
+// playVideo.bind({name: 'Nirav'})();
+
+
+//Varying params to sum method and support array.
+// console.log(sum(1, 2, 3, 4));   // Works
+// console.log(sum([1, 2, 3, 4]));   // Won't work directly since ... spread operator converts plain elements into array.
+
+// function sum(... items){
+//     if (items.length === 1 && Array.isArray(items[0]))
+//         items = [...items[0]];
+//     return items.reduce((a, b) => a + b);
+// }
+
+
+//circle.radius = 2;
+//console.log(circle.area);
+
+const circle = {
+    radius: 1,
+    get area(){
+        return Math.PI * this.radius * this.radius;
+    }
+};
+
+console.log(circle.area);

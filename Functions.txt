@@ -230,3 +230,57 @@ startWithVar();
 
 Issue#2 - If var declared in global scope, it attaches itself to window object. Let does not.
 Window is a big complex object
+
+------------------
+This keyword.
+
+This -> Object executing the current function
+1. // If fn is part of object, we call that function as method. So, in that case, this references that object itself
+2. // If fn is a regular fn, it references global object(Window object in browser and global in nodeJs)
+3. //With constructor fn, because we initialize it with a new object, this points to new object
+1. Example
+const video={
+    title: 'a',
+    play(){
+        console.log(this);  // Since play is a method inside video object, video object will be printed on console.
+    }
+}
+
+video.stop = function(){
+    console.log(this);
+    
+}
+
+video.stop();
+
+
+2. Example 
+function playVideo(){
+    console.log(this);  // Since this is a regular function, we see Window object printed on console.
+
+}
+
+playVideo();
+
+3. Example
+
+function Video(){
+    console.log(this);  // Prints Video Object since its a constructor function and new creates a blank object
+}
+
+const v = new Video();
+
+-------------
+Change this
+1. Use .call() or apply() method
+function playVideo(){
+    console.log(this);
+}
+
+2. Use Arrow function
+playVideo();    //Logs Window object
+
+playVideo.call({name: 'Nirav'}), 1, 2;    // Logs whatever object we've passed as a param.
+playVideo.apply({name: 'Nirav'}, [1, 2]);    // Logs whatever object we've passed as a param.
+playVideo.bind({name: 'Nirav'})();
+
